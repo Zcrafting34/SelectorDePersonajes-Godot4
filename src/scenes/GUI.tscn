@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://ryngfe0tt32p"]
+
+[ext_resource type="Script" path="res://src/scenes/SelectorPersonaje.gd" id="1_ah728"]
+[ext_resource type="Texture2D" uid="uid://cc4unhijhp2do" path="res://Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_qwn6u"]
+[ext_resource type="Script" path="res://src/scenes/CharacterData.gd" id="2_dnxxj"]
+[ext_resource type="Texture2D" uid="uid://befvxaahmo14" path="res://Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="3_jym1o"]
+[ext_resource type="Texture2D" uid="uid://dvo41ssp00nis" path="res://Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="5_qlbua"]
+[ext_resource type="Texture2D" uid="uid://lhm3d662utx7" path="res://Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Yellow/Warrior_Yellow.png" id="6_glpo6"]
+[ext_resource type="PackedScene" uid="uid://opa8dkx1a58v" path="res://src/scenes/W_Blue.tscn" id="7_p6c4b"]
+[ext_resource type="PackedScene" uid="uid://bpnqi23ti0xok" path="res://src/scenes/W_Purple.tscn" id="8_c24b0"]
+[ext_resource type="PackedScene" uid="uid://c7phemutjxvq7" path="res://src/scenes/W_Red.tscn" id="9_u4nas"]
+[ext_resource type="PackedScene" uid="uid://bd20unufr34xu" path="res://src/scenes/W_Yellow.tscn" id="10_puxpr"]
+
+[sub_resource type="Resource" id="Resource_oo7vc"]
+script = ExtResource("2_dnxxj")
+Key = "Blue"
+Imagen = ExtResource("3_jym1o")
+Scene = ExtResource("7_p6c4b")
+
+[sub_resource type="Resource" id="Resource_oxq0l"]
+script = ExtResource("2_dnxxj")
+Key = "Purple"
+Imagen = ExtResource("1_qwn6u")
+Scene = ExtResource("8_c24b0")
+
+[sub_resource type="Resource" id="Resource_uafpt"]
+script = ExtResource("2_dnxxj")
+Key = "Red"
+Imagen = ExtResource("5_qlbua")
+Scene = ExtResource("9_u4nas")
+
+[sub_resource type="Resource" id="Resource_u3v6s"]
+script = ExtResource("2_dnxxj")
+Key = "Yellow"
+Imagen = ExtResource("6_glpo6")
+Scene = ExtResource("10_puxpr")
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ah728")
+Personajes = Array[ExtResource("2_dnxxj")]([SubResource("Resource_oo7vc"), SubResource("Resource_oxq0l"), SubResource("Resource_uafpt"), SubResource("Resource_u3v6s")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1152.0
+offset_bottom = 647.0
+color = Color(9.62615e-07, 0.588123, 0.590285, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(543, 287)
+scale = Vector2(3, 3)
+texture = ExtResource("6_glpo6")
+hframes = 6
+vframes = 8
+
+[node name="siguiente" type="Button" parent="."]
+layout_mode = 0
+offset_left = 726.0
+offset_top = 298.0
+offset_right = 767.0
+offset_bottom = 336.0
+text = ">"
+
+[node name="anterior" type="Button" parent="."]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 300.0
+offset_right = 365.0
+offset_bottom = 338.0
+text = "<"
+
+[node name="select" type="Button" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 433.0
+offset_right = 606.0
+offset_bottom = 474.0
+text = "Seleccionar"
+
+[connection signal="pressed" from="siguiente" to="." method="_on_siguiente_pressed"]
+[connection signal="pressed" from="anterior" to="." method="_on_anterior_pressed"]
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]

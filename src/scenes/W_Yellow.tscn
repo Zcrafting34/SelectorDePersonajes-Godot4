@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd20unufr34xu"]
+
+[ext_resource type="Script" path="res://src/scenes/w_blue.gd" id="1_lele7"]
+[ext_resource type="Texture2D" uid="uid://lhm3d662utx7" path="res://Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Yellow/Warrior_Yellow.png" id="1_yovii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5d1f"]
+size = Vector2(30, 33)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_lele7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yovii")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_r5d1f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 790
+limit_bottom = 580
+position_smoothing_enabled = true
